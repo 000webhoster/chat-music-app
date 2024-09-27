@@ -8,10 +8,8 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
-// Serve static files from public directory
 app.use(express.static('public'));
 
-// Setup ChatGPT API route
 app.post('/chatgpt', async (req, res) => {
     const userMessage = req.body.message;
     try {
@@ -31,7 +29,6 @@ app.post('/chatgpt', async (req, res) => {
     }
 });
 
-// Handle chat messages
 io.on('connection', (socket) => {
     console.log('New user connected');
 
